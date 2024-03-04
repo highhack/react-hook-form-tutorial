@@ -9,6 +9,9 @@ import { FormExample } from "./components/FormExample";
 import { FormExample1 } from "./components/FormExample1";
 import { FormExample2 } from "./components/FormExample2";
 import FormExample3 from "./components/FormExample3";
+import { FormExample4 } from "./components/FormExample4";
+import { FormExample21 } from "./components/FormExample21";
+import { FormExample22 } from "./components/FormExample22";
 
 const schema = z.object({
   email: z.string().email(),
@@ -18,8 +21,11 @@ const schema = z.object({
 
 // export type FormFields = z.infer<typeof schema>;
 export type FormFields = {
+  firstName: string;
+  secondName: string;
   email: string;
   password: string;
+  notes: string;
   required: string;
   maxLength: string;
   minLength: string;
@@ -31,6 +37,7 @@ export type FormFields = {
   checkboxDisabled: boolean;
   inputUnregistered: string;
   checkboxUnregistered: boolean;
+  shadecnemail: string;
 };
 
 export default function Home() {
@@ -39,7 +46,10 @@ export default function Home() {
       {/* <FormExample title="Register" />; */}
       {/* <FormExample1 title="Unregister" />; */}
       {/* <FormExample2 title="FormState" />; */}
-      <FormExample3 title="useFieldArray" />;
+      {/* <FormExample21 title="watch and useWatch:" />; */}
+      <FormExample22 title="reset and resetField:" />;
+      {/* <FormExample3 title="useFieldArray" />; */}
+      {/* <FormExample4 title="useController" />; */}
     </>
   );
 }

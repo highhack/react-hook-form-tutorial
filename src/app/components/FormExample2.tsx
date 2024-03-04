@@ -1,7 +1,7 @@
 import { SubmitHandler, set, useForm } from "react-hook-form";
 import { FormFields } from "../page";
-import { useEffect, useState } from "react";
-import clsx from "clsx";
+import { useState } from "react";
+import Line from "./Line";
 
 type PropsType = {
   title: string;
@@ -96,44 +96,44 @@ export const FormExample2 = ({ title }: PropsType) => {
         <span className="text-yellow-300 text-xl bold">dirtyFields: </span>{" "}
         {JSON.stringify(dirtyFields, null, 2)}
       </p>
-      <div className="bg-yellow-300 w-[500px] h-1" />
+      <Line />
       <p className="whitespace-pre-line">
         <span className="text-yellow-300 text-xl bold">touchedFields: </span>{" "}
         {JSON.stringify(touchedFields, null, 2)}
       </p>
-      <div className="bg-yellow-300 w-[500px] h-1" />
+      <Line />
       <p className="whitespace-pre-line">
         <span className="text-yellow-300 text-xl bold">defaultValues: </span>{" "}
         {JSON.stringify(defaultValues, null, 2)}
       </p>
-      <div className="bg-yellow-300 w-[500px] h-1" />
+      <Line />
       <p className="whitespace-pre-line">
         <span className="text-yellow-300 text-xl bold">isSubmitted: </span>{" "}
         {JSON.stringify(isSubmitted, null, 2)}
       </p>
-      <div className="bg-yellow-300 w-[500px] h-1" />
+      <Line />
       <p className="whitespace-pre-line">
         <span className="text-yellow-300 text-xl bold">
           isSubmitSuccessful:
         </span>{" "}
         {JSON.stringify(isSubmitSuccessful, null, 2)}
       </p>
-      <div className="bg-yellow-300 w-[500px] h-1" />
+      <Line />
       <p className="whitespace-pre-line">
         <span className="text-yellow-300 text-xl bold">isSubmitting: </span>{" "}
         {JSON.stringify(isSubmitting, null, 2)}
       </p>
-      <div className="bg-yellow-300 w-[500px] h-1" />
+      <Line />
       <p className="whitespace-pre-line">
         <span className="text-yellow-300 text-xl bold">submitCount: </span>{" "}
         {JSON.stringify(submitCount, null, 2)}
       </p>
-      <div className="bg-yellow-300 w-[500px] h-1" />
+      <Line />
       <p className="whitespace-pre-line">
         <span className="text-yellow-300 text-xl bold">isValid: </span>{" "}
         {JSON.stringify(isValid, null, 2)}
       </p>
-      <div className="bg-yellow-300 w-[500px] h-1" />
+      <Line />
       <p className="whitespace-pre-line">
         <span className="text-yellow-300 text-xl bold">isValidating: </span>
         {JSON.stringify(isValidating, null, 2)}
