@@ -1,5 +1,6 @@
 import * as React from "react";
 import { useForm, useFieldArray } from "react-hook-form";
+import Line from "./Line";
 
 type FormValues = {
   test: {
@@ -13,21 +14,23 @@ type PropsType = {
 };
 
 export default function FormExample3({ title }: PropsType) {
-  const { register, control, handleSubmit, watch } = useForm<FormValues>({
+  const {
+    register,
+    control,
+    handleSubmit,
+    formState: { isSubmitting },
+  } = useForm<FormValues>({
     defaultValues: {
       test: [{ firstName: "German", lastName: "Goldin" }],
     },
   });
-  const { fields, remove, append } = useFieldArray({
-    name: "test",
-    control,
-  });
+  const { fields, remove, prepend, append, insert, swap, move } = useFieldArray(
+    {
+      name: "test",
+      control,
+    }
+  );
   const onSubmit = (data: FormValues) => console.log(data);
-
-  // important to fill defaultValue with fields, so when input
-  // get removed next render will return updated fields value
-  console.log(watch("test"));
-  console.log("fields", fields);
 
   return (
     <form
@@ -68,22 +71,54 @@ export default function FormExample3({ title }: PropsType) {
           </div>
         );
       })}
-      <button
-        type="button"
-        onClick={() =>
-          append({
-            firstName: "",
-            lastName: "",
-          })
-        }
-      >
-        Add Field
-      </button>
+      <div className="flex gap-3 w-[27%]">
+        <button
+          type="button"
+          onClick={
+            () =>
+              append({
+                firstName: "",
+                lastName: "",
+              })
+            //   prepend({
+            //     firstName: "",
+            //     lastName: "",
+            //   })
+            //   insert(2, {
+            //     firstName: "",
+            //     lastName: "",
+            //   })
+          }
+        >
+          Add Field
+        </button>
+        <button type="button" onClick={() => swap(1, 2)}>
+          Swap position
+        </button>
+        <button type="button" onClick={() => move(0, fields?.length - 1)}>
+          Move to the end
+        </button>
+      </div>
 
-      <div className="bg-yellow-300 w-[500px] h-1" />
-      <p className="whitespace-pre-line">
-        <span className="text-yellow-300 text-xl bold">Fields: </span>
-        {fields?.length > 0 ? JSON.stringify(fields, null, 2) : ""}
+      <Line />
+      <p className="whitespace-pre-line w-[27%]">
+        <span className="text-yellow-300  bold">Fields: </span>
+        {JSON.stringify(fields, null, 2)}
+      </p>
+      <Line />
+      <p className="whitespace-pre-line w-[27%]">
+        <span className="text-yellow-300  bold">Append: </span>
+        {"in the end"}
+      </p>
+      <Line />
+      <p className="whitespace-pre-line w-[27%]">
+        <span className="text-yellow-300 bold">Prepend: </span>
+        {"in the beginning"}
+      </p>
+      <Line />
+      <p className="whitespace-pre-line w-[27%]">
+        <span className="text-yellow-300 bold">Insert: </span>
+        {"put input by index"}
       </p>
     </form>
   );
