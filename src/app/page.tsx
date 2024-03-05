@@ -1,9 +1,5 @@
 "use client";
 
-import { zodResolver } from "@hookform/resolvers/zod";
-import Image from "next/image";
-import { SubmitHandler, useForm } from "react-hook-form";
-import { z } from "zod";
 import "./index.css";
 import { FormExample } from "./components/FormExample";
 import { FormExample1 } from "./components/FormExample1";
@@ -14,14 +10,8 @@ import { FormExample21 } from "./components/FormExample21";
 import { FormExample22 } from "./components/FormExample22";
 import { FormExample23 } from "./components/FormExample23";
 import FormExample5 from "./components/FormExample5";
+import { FormExample6 } from "./components/FormExample6";
 
-const schema = z.object({
-  email: z.string().email(),
-  password: z.string().min(8),
-  registerTest: z.string(),
-});
-
-// export type FormFields = z.infer<typeof schema>;
 export type FormFields = {
   firstName: string;
   secondName: string;
@@ -53,7 +43,8 @@ export default function Home() {
       {/* <FormExample23 title="setError and clearErrors:" />; */}
       {/* <FormExample3 title="useFieldArray" />; */}
       {/* <FormExample4 title="useController" />; */}
-      <FormExample5 title="useFormContext" />;
+      {/* <FormExample5 title="useFormContext" />; */}
+      <FormExample6 title="Zod Validation" />;
     </>
   );
 }
