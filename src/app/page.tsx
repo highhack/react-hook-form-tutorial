@@ -12,6 +12,8 @@ import FormExample3 from "./components/FormExample3";
 import { FormExample4 } from "./components/FormExample4";
 import { FormExample21 } from "./components/FormExample21";
 import { FormExample22 } from "./components/FormExample22";
+import { FormExample23 } from "./components/FormExample23";
+import FormExample5 from "./components/FormExample5";
 
 const schema = z.object({
   email: z.string().email(),
@@ -47,9 +49,11 @@ export default function Home() {
       {/* <FormExample1 title="Unregister" />; */}
       {/* <FormExample2 title="FormState" />; */}
       {/* <FormExample21 title="watch and useWatch:" />; */}
-      <FormExample22 title="reset and resetField:" />;
+      {/* <FormExample22 title="reset and resetField:" />; */}
+      {/* <FormExample23 title="setError and clearErrors:" />; */}
       {/* <FormExample3 title="useFieldArray" />; */}
       {/* <FormExample4 title="useController" />; */}
+      <FormExample5 title="useFormContext" />;
     </>
   );
 }

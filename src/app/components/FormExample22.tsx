@@ -8,30 +8,40 @@ type PropsType = {
 };
 
 export const FormExample22 = ({ title }: PropsType) => {
-  const { register, handleSubmit, formState, reset, watch, resetField } =
-    useForm<FormFields>({
-      defaultValues: {
-        email: "test@email.com",
-        password: "",
-        firstName: "",
-      },
-    });
+  const {
+    register,
+    handleSubmit,
+    formState,
+    reset,
+    watch,
+    resetField,
+    setError,
+  } = useForm<FormFields>({
+    defaultValues: {
+      email: "test@email.com",
+      password: "",
+      firstName: "",
+    },
+  });
 
   const {
     isSubmitting,
     errors,
     dirtyFields,
     touchedFields,
-    defaultValues,
-    isSubmitted,
     isSubmitSuccessful,
-    submitCount,
-    isValid,
-    isValidating,
   } = formState;
 
-  const onSubmit: SubmitHandler<FormFields> = (data) => {
-    console.log("data", data);
+  const onSubmit: SubmitHandler<FormFields> = async (data) => {
+    try {
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+      reset();
+      console.log("data", data);
+    } catch (error) {
+      setError("root", {
+        message: "This email is already taken",
+      });
+    }
   };
 
   useEffect(() => {
@@ -79,7 +89,7 @@ export const FormExample22 = ({ title }: PropsType) => {
         className="w-[500px]"
       />
       {errors?.firstName && (
-        <p className="text-red-500"> {errors?.required?.message}</p>
+        <p className="text-red-500"> {errors?.firstName?.message}</p>
       )}
 
       <button className="w-[500px]" onClick={() => reset()}>
@@ -99,7 +109,7 @@ export const FormExample22 = ({ title }: PropsType) => {
         className="w-[500px]"
         onClick={() => resetField("firstName", { keepError: true })}
       >
-        Reset keep error
+        Reset firstName keep error
       </button>
       <button
         type="button"
