@@ -11,6 +11,9 @@ import { FormExample22 } from "./components/FormExample22";
 import { FormExample23 } from "./components/FormExample23";
 import FormExample5 from "./components/FormExample5";
 import { FormExample6 } from "./components/FormExample6";
+import { FormExampleRerender } from "./components/FormExampleRerender";
+import { FormExampleRerender2 } from "./components/FormExampleRerender2";
+import { FormExample7 } from "./components/FormExample7";
 
 export type FormFields = {
   firstName: string;
@@ -42,9 +45,12 @@ export default function Home() {
       {/* <FormExample22 title="reset and resetField:" />; */}
       {/* <FormExample23 title="setError and clearErrors:" />; */}
       {/* <FormExample3 title="useFieldArray" />; */}
-      {/* <FormExample4 title="useController" />; */}
+      <FormExample4 title="useController" />;
       {/* <FormExample5 title="useFormContext" />; */}
-      <FormExample6 title="Zod Validation" />;
+      {/* <FormExample6 title="Zod Validation" />; */}
+      {/* <FormExample7 title="useForm Mode" /> */}
+      {/* <FormExampleRerender title="Rerender" /> */}
+      {/* <FormExampleRerender2 title="Rerender without controller" /> */}
     </>
   );
 }

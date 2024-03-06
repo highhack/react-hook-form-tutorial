@@ -2,6 +2,7 @@ import { SubmitHandler, set, useForm } from "react-hook-form";
 import { FormFields } from "../page";
 import { useEffect, useState } from "react";
 import Line from "./Line";
+import { RerenderCounter } from "./RerenderCounter";
 
 type PropsType = {
   title: string;
@@ -57,6 +58,7 @@ export const FormExample22 = ({ title }: PropsType) => {
       className="m-10 gap-5  flex flex-col   justify-center items-center"
       onSubmit={handleSubmit(onSubmit)}
     >
+      <RerenderCounter />
       <div className="text-[36px]">{title}</div>
       <div>
         Reset the entire form state, fields reference, and subscriptions. There

@@ -1,5 +1,6 @@
 import React from "react";
 import { useForm, FormProvider, useFormContext } from "react-hook-form";
+import { RerenderCounter } from "./RerenderCounter";
 
 type PropsType = {
   title: string;
@@ -13,6 +14,7 @@ export default function FormExample5({ title }: PropsType) {
 
   return (
     <FormProvider {...methods}>
+      <RerenderCounter />
       <form
         className="m-10 gap-5  flex flex-col  justify-center items-center"
         onSubmit={handleSubmit(onSubmit)}

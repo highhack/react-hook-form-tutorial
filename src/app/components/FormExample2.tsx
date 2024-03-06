@@ -2,11 +2,13 @@ import { SubmitHandler, set, useForm } from "react-hook-form";
 import { FormFields } from "../page";
 import { useState } from "react";
 import Line from "./Line";
+import { RerenderCounter } from "./RerenderCounter";
 
 type PropsType = {
   title: string;
 };
 
+const featureFlag = true;
 export const FormExample2 = ({ title }: PropsType) => {
   const [data, setData] = useState({});
 
@@ -48,6 +50,7 @@ export const FormExample2 = ({ title }: PropsType) => {
       className="m-10 gap-5  flex flex-col   justify-center items-center"
       onSubmit={handleSubmit(onSubmit)}
     >
+      <RerenderCounter />
       <div className="text-[36px]">{title}</div>
       <div>
         This object contains information about the entire form state. It helps
@@ -59,23 +62,23 @@ export const FormExample2 = ({ title }: PropsType) => {
         {...register("email")}
         type="text"
         placeholder="email"
-        className="w-[500px]"
+        className="w-[34%]"
       />
 
       <input
         {...register("password")}
         type="password"
         placeholder="password"
-        className="w-[500px]"
+        className="w-[34%]"
       />
 
       <input
-        {...register("required", {
+        {...register("firstName", {
           required: true,
         })}
         type="text"
         placeholder="required"
-        className="w-[500px]"
+        className="w-[34%]"
       />
 
       <input
@@ -85,59 +88,67 @@ export const FormExample2 = ({ title }: PropsType) => {
         })}
         type="text"
         placeholder="validate"
-        className="w-[500px]"
+        className="w-[34%]"
       />
 
-      <button className="w-[500px]" disabled={isSubmitting} type="submit">
+      <button className="w-[34%]" disabled={isSubmitting} type="submit">
         {isSubmitting ? "Loading..." : "Submit"}
       </button>
 
-      <p className="whitespace-pre-line">
-        <span className="text-yellow-300 text-xl bold">dirtyFields: </span>{" "}
-        {JSON.stringify(dirtyFields, null, 2)}
-      </p>
-      <Line />
-      <p className="whitespace-pre-line">
-        <span className="text-yellow-300 text-xl bold">touchedFields: </span>{" "}
-        {JSON.stringify(touchedFields, null, 2)}
-      </p>
-      <Line />
-      <p className="whitespace-pre-line">
-        <span className="text-yellow-300 text-xl bold">defaultValues: </span>{" "}
-        {JSON.stringify(defaultValues, null, 2)}
-      </p>
-      <Line />
-      <p className="whitespace-pre-line">
-        <span className="text-yellow-300 text-xl bold">isSubmitted: </span>{" "}
-        {JSON.stringify(isSubmitted, null, 2)}
-      </p>
-      <Line />
-      <p className="whitespace-pre-line">
-        <span className="text-yellow-300 text-xl bold">
-          isSubmitSuccessful:
-        </span>{" "}
-        {JSON.stringify(isSubmitSuccessful, null, 2)}
-      </p>
-      <Line />
-      <p className="whitespace-pre-line">
-        <span className="text-yellow-300 text-xl bold">isSubmitting: </span>{" "}
-        {JSON.stringify(isSubmitting, null, 2)}
-      </p>
-      <Line />
-      <p className="whitespace-pre-line">
-        <span className="text-yellow-300 text-xl bold">submitCount: </span>{" "}
-        {JSON.stringify(submitCount, null, 2)}
-      </p>
-      <Line />
-      <p className="whitespace-pre-line">
-        <span className="text-yellow-300 text-xl bold">isValid: </span>{" "}
-        {JSON.stringify(isValid, null, 2)}
-      </p>
-      <Line />
-      <p className="whitespace-pre-line">
-        <span className="text-yellow-300 text-xl bold">isValidating: </span>
-        {JSON.stringify(isValidating, null, 2)}
-      </p>
+      {featureFlag && (
+        <div>
+          <p className="whitespace-pre-line">
+            <span className="text-yellow-300 text-xl bold">dirtyFields: </span>{" "}
+            {JSON.stringify(dirtyFields, null, 2)}
+          </p>
+          <Line />
+          <p className="whitespace-pre-line">
+            <span className="text-yellow-300 text-xl bold">
+              touchedFields:{" "}
+            </span>{" "}
+            {JSON.stringify(touchedFields, null, 2)}
+          </p>
+          <Line />
+          <p className="whitespace-pre-line">
+            <span className="text-yellow-300 text-xl bold">
+              defaultValues:{" "}
+            </span>{" "}
+            {JSON.stringify(defaultValues, null, 2)}
+          </p>
+          <Line />
+          <p className="whitespace-pre-line">
+            <span className="text-yellow-300 text-xl bold">isSubmitted: </span>{" "}
+            {JSON.stringify(isSubmitted, null, 2)}
+          </p>
+          <Line />
+          <p className="whitespace-pre-line">
+            <span className="text-yellow-300 text-xl bold">
+              isSubmitSuccessful:
+            </span>{" "}
+            {JSON.stringify(isSubmitSuccessful, null, 2)}
+          </p>
+          <Line />
+          <p className="whitespace-pre-line">
+            <span className="text-yellow-300 text-xl bold">isSubmitting: </span>{" "}
+            {JSON.stringify(isSubmitting, null, 2)}
+          </p>
+          <Line />
+          <p className="whitespace-pre-line">
+            <span className="text-yellow-300 text-xl bold">submitCount: </span>{" "}
+            {JSON.stringify(submitCount, null, 2)}
+          </p>
+          <Line />
+          <p className="whitespace-pre-line">
+            <span className="text-yellow-300 text-xl bold">isValid: </span>{" "}
+            {JSON.stringify(isValid, null, 2)}
+          </p>
+          <Line />
+          <p className="whitespace-pre-line">
+            <span className="text-yellow-300 text-xl bold">isValidating: </span>
+            {JSON.stringify(isValidating, null, 2)}
+          </p>
+        </div>
+      )}
     </form>
   );
 };

@@ -1,6 +1,7 @@
 import { SubmitHandler, set, useForm } from "react-hook-form";
 import { FormFields } from "../page";
 import Line from "./Line";
+import { RerenderCounter } from "./RerenderCounter";
 
 type PropsType = {
   title: string;
@@ -35,6 +36,7 @@ export const FormExample23 = ({ title }: PropsType) => {
       className="m-10 gap-5  flex flex-col   justify-center items-center"
       onSubmit={handleSubmit(onSubmit)}
     >
+      <RerenderCounter />
       <div className="text-[36px]">{title}</div>
       <div>
         setErrors - The function allows you to manually set one or more errors.

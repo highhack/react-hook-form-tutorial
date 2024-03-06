@@ -1,7 +1,7 @@
 import { SubmitHandler, useForm } from "react-hook-form";
-import { useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { ZodType, z } from "zod";
+import { z } from "zod";
+import { RerenderCounter } from "./RerenderCounter";
 
 type PropsType = {
   title: string;
@@ -53,6 +53,7 @@ export const FormExample6 = ({ title }: PropsType) => {
       className="m-10 gap-5  flex flex-col   justify-center items-center"
       onSubmit={handleSubmit(onSubmit)}
     >
+      <RerenderCounter />
       <div className="text-[36px]">{title}</div>
 
       <div>

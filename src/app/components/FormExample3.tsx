@@ -1,6 +1,7 @@
 import * as React from "react";
 import { useForm, useFieldArray } from "react-hook-form";
 import Line from "./Line";
+import { RerenderCounter } from "./RerenderCounter";
 
 type FormValues = {
   test: {
@@ -37,6 +38,7 @@ export default function FormExample3({ title }: PropsType) {
       onSubmit={handleSubmit(onSubmit)}
       className="m-10 gap-5  flex flex-col   justify-center items-center"
     >
+      <RerenderCounter />
       <div className="text-[36px]">{title}</div>
       <div>
         Custom hook for working with Field Arrays (dynamic form). The motivation

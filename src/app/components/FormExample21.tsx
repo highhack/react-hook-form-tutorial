@@ -3,6 +3,7 @@ import { FormFields } from "../page";
 import { useEffect, useState } from "react";
 import clsx from "clsx";
 import Line from "./Line";
+import { RerenderCounter } from "./RerenderCounter";
 
 type PropsType = {
   title: string;
@@ -12,7 +13,8 @@ const WatchInput = ({ control }: { control: Control<FormFields, any> }) => {
   const notes = useWatch({ control, name: "notes" });
 
   return (
-    <p className="whitespace-pre-line w-[34%]">
+    <p className="whitespace-pre-line w-[50%] p-2 border-2 border-yellow-900">
+      <h2>Inner Component</h2>
       <span className="text-yellow-300 bold">
         {"Inner component with using:"}
         <p>{"useWatch({ name: 'notes' })"}</p>
@@ -49,6 +51,7 @@ export const FormExample21 = ({ title }: PropsType) => {
       className="m-10 gap-5  flex flex-col   justify-center items-center"
       onSubmit={handleSubmit(onSubmit)}
     >
+      <RerenderCounter />
       <div className="text-[36px]">{title}</div>
       <p>
         watch: This method will watch specified inputs and return their values.
@@ -65,7 +68,7 @@ export const FormExample21 = ({ title }: PropsType) => {
         level or the custom hook level update.
       </p>
 
-      <div className="flex flex-col gap-3 w-[34%]">
+      <div className="flex flex-col gap-3 w-[50%]">
         <input
           {...register("email")}
           type="text"
@@ -86,7 +89,7 @@ export const FormExample21 = ({ title }: PropsType) => {
         />
       </div>
 
-      <button className="w-[34%]" disabled={isSubmitting} type="submit">
+      <button className="w-[50%]" disabled={isSubmitting} type="submit">
         {isSubmitting ? "Loading..." : "Submit"}
       </button>
       {errors?.root && (
@@ -94,26 +97,26 @@ export const FormExample21 = ({ title }: PropsType) => {
       )}
 
       <Line />
-      <p className="whitespace-pre-line w-[34%]">
+      <p className="whitespace-pre-line w-[50%]">
         <span className="text-yellow-300 bold">{"watch():"} </span>
         {JSON.stringify(watch(), null, 2)}
       </p>
 
       <Line />
-      <p className="whitespace-pre-line w-[34%]">
+      <p className="whitespace-pre-line w-[50%]">
         <span className="text-yellow-300 bold">{"watch('email'):"} </span>
         {JSON.stringify(watch("email"), null, 2)}
       </p>
 
       <Line />
-      <p className="whitespace-pre-line w-[34%]">
+      <p className="whitespace-pre-line w-[50%]">
         <span className="text-yellow-300 bold">
           {"watch(['email', 'notes']):"}{" "}
         </span>
         {JSON.stringify(watch(["email", "notes"]), null, 2)}
       </p>
       <Line />
-      <p className="whitespace-pre-line w-[34%]">
+      <p className="whitespace-pre-line w-[50%]">
         <span className="text-yellow-300 bold">
           {"Callback watch((value, { name, type }) => { value, name, type }:"}{" "}
         </span>

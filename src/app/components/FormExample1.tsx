@@ -2,15 +2,14 @@ import { SubmitHandler, set, useForm } from "react-hook-form";
 import { FormFields } from "../page";
 import { useEffect, useState } from "react";
 import clsx from "clsx";
+import { RerenderCounter } from "./RerenderCounter";
 
 type PropsType = {
   title: string;
 };
 
 export const FormExample1 = ({ title }: PropsType) => {
-  const [data, setData] = useState({});
-
-  const { register, handleSubmit, unregister, formState, watch } =
+  const { register, handleSubmit, unregister, formState, watch, getValues } =
     useForm<FormFields>({
       defaultValues: {
         checkboxUnregistered: true,
@@ -31,7 +30,6 @@ export const FormExample1 = ({ title }: PropsType) => {
 
   const onSubmit: SubmitHandler<FormFields> = async (data) => {
     console.log("data", data);
-    setData(data);
   };
 
   return (
@@ -39,6 +37,7 @@ export const FormExample1 = ({ title }: PropsType) => {
       className="m-10 gap-5  flex flex-col   justify-center items-center"
       onSubmit={handleSubmit(onSubmit)}
     >
+      <RerenderCounter />
       <div className="text-[36px]">{title}</div>
       <div>
         This method allows you to unregister a single input or an array of
@@ -46,7 +45,7 @@ export const FormExample1 = ({ title }: PropsType) => {
         unregistering an input.
       </div>
 
-      <div className="flex  gap-3 w-[500px]">
+      <div className="flex  gap-3 w-[50%]">
         <input
           {...register("inputDisabled", {
             disabled: disabled,
@@ -67,7 +66,7 @@ export const FormExample1 = ({ title }: PropsType) => {
         />
       </div>
 
-      <div className="flex  gap-3 w-[500px]">
+      <div className="flex  gap-3 w-[50%]">
         {registered && (
           <input
             {...register("inputUnregistered")}
@@ -88,14 +87,16 @@ export const FormExample1 = ({ title }: PropsType) => {
         />
       </div>
 
-      <button className="w-[500px]" disabled={isSubmitting} type="submit">
+      <button className="w-[50%]" disabled={isSubmitting} type="submit">
         {isSubmitting ? "Loading..." : "Submit"}
       </button>
       {errors?.root && (
         <div className="text-red-500">{errors.root.message}</div>
       )}
 
-      <p className="whitespace-pre-line">{JSON.stringify(data, null, 2)}</p>
+      <p className="whitespace-pre-line">
+        {JSON.stringify(getValues(), null, 2)}
+      </p>
     </form>
   );
 };

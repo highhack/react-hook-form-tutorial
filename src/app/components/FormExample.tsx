@@ -9,27 +9,16 @@ type PropsType = {
 export const FormExample = ({ title }: PropsType) => {
   const [data, setData] = useState({});
 
-  const { register, handleSubmit, setError, watch, formState } =
-    useForm<FormFields>({
-      defaultValues: {
-        email: "test@email.com",
-        valueAsNumber: 5,
-      },
-      // resolver: zodResolver(schema),
-    });
+  const { register, handleSubmit, watch, formState } = useForm<FormFields>({
+    defaultValues: {
+      email: "test@email.com",
+      valueAsNumber: 5,
+    },
+  });
 
   const { errors, isSubmitting } = formState;
 
   const onSubmit: SubmitHandler<FormFields> = async (data) => {
-    // try {
-    //   await new Promise((resolve) => setTimeout(resolve, 1000));
-    //   console.log(data);
-    // } catch (error) {
-    //   setError("root", {
-    //     message: "This email is already taken",
-    //   });
-    // }
-
     console.log("data", data);
     setData(data);
   };
@@ -54,7 +43,7 @@ export const FormExample = ({ title }: PropsType) => {
           })}
           type="text"
           placeholder="requiredTest"
-          className="w-[500px]"
+          className="w-[34%]"
         />
         {errors?.required && (
           <p className="text-red-500"> {errors?.required?.message}</p>
@@ -68,8 +57,8 @@ export const FormExample = ({ title }: PropsType) => {
             },
           })}
           type="text"
-          placeholder="maxLength"
-          className="w-[500px]"
+          placeholder="max length is 5 letters"
+          className="w-[34%]"
         />
         {errors?.maxLength && (
           <p className="text-red-500"> {errors?.maxLength?.message}</p>
@@ -83,8 +72,8 @@ export const FormExample = ({ title }: PropsType) => {
             },
           })}
           type="text"
-          placeholder="minLength"
-          className="w-[500px]"
+          placeholder="min length is 3 letters"
+          className="w-[34%]"
         />
         {errors?.minLength && (
           <p className="text-red-500"> {errors?.minLength?.message}</p>
@@ -98,8 +87,8 @@ export const FormExample = ({ title }: PropsType) => {
             },
           })}
           type="text"
-          placeholder="max"
-          className="w-[500px]"
+          placeholder="maximum 5"
+          className="w-[34%]"
         />
         {errors?.max && <p className="text-red-500"> {errors?.max?.message}</p>}
 
@@ -111,8 +100,8 @@ export const FormExample = ({ title }: PropsType) => {
             },
           })}
           type="text"
-          placeholder="pattern"
-          className="w-[500px]"
+          placeholder="pattern only words with minimum 3 letters"
+          className="w-[34%]"
         />
         {errors?.pattern && (
           <p className="text-red-500"> {errors?.pattern?.message}</p>
@@ -124,14 +113,14 @@ export const FormExample = ({ title }: PropsType) => {
               value === "Yes" || value === "Yes" || "Yes or No only",
           })}
           type="text"
-          placeholder="validate"
-          className="w-[500px]"
+          placeholder="Yes or No only"
+          className="w-[34%]"
         />
         {errors?.validate && (
           <p className="text-red-500"> {errors?.validate?.message}</p>
         )}
 
-        <div className="flex gap-3 w-[500px]">
+        <div className="flex gap-3 w-[34%]">
           <input
             {...register("valueAsNumber", {
               valueAsNumber: true,
@@ -144,7 +133,7 @@ export const FormExample = ({ title }: PropsType) => {
         </div>
       </>
 
-      <button className="w-[500px]" disabled={isSubmitting} type="submit">
+      <button className="w-[34%]" disabled={isSubmitting} type="submit">
         {isSubmitting ? "Loading..." : "Submit"}
       </button>
       {errors?.root && (
