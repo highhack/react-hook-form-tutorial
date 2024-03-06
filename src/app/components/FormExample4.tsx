@@ -1,6 +1,6 @@
 import { Input } from "@/components/ui/input";
 import React, { useState } from "react";
-import { useForm, useController } from "react-hook-form";
+import { useForm, useController, Controller } from "react-hook-form";
 import { FormFields } from "../page";
 import { RerenderCounter } from "./RerenderCounter";
 import { on } from "events";
@@ -11,6 +11,7 @@ type PropsType = {
 };
 
 export const FormExample4 = ({ title }: PropsType) => {
+  const [value, setValue] = useState("");
   const { control, handleSubmit } = useForm<FormFields>();
   const { field, fieldState } = useController({
     name: "shadecnemail",
@@ -27,11 +28,10 @@ export const FormExample4 = ({ title }: PropsType) => {
 
   const onSubmit = (data: any) => {
     console.log(data);
+    setValue(data?.shadecnemail);
   };
 
   console.log("field", field);
-
-  const [value, setValue] = useState(field.value);
 
   return (
     <form
@@ -51,6 +51,21 @@ export const FormExample4 = ({ title }: PropsType) => {
       {fieldState.error && (
         <p className="text-red-500"> {fieldState?.error?.message}</p>
       )}
+
+      {/* <Controller
+        control={control}
+        name="shadecnemail"
+        render={({ field: { onChange, onBlur, value, ref } }) => (
+          <Input
+            onChange={onChange} // send value to hook form
+            onBlur={onBlur} // notify when input is touched/blur
+            placeholder="Enter your email" // Adding placeholder
+            autoFocus // Autofocus the input
+            disabled={false} // Allowing to disable the input
+            className="w-[500px] bg-black" // Adding custom class name
+          />
+        )}
+      /> */}
       <button type="submit">Submit</button>
 
       <Line />

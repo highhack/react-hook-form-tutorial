@@ -38,14 +38,14 @@ export type FormFields = {
 export default function Home() {
   return (
     <>
-      {/* <FormExample title="Register" />; */}
+      <FormExample title="Register" />;
       {/* <FormExample1 title="Unregister" />; */}
       {/* <FormExample2 title="FormState" />; */}
       {/* <FormExample21 title="watch and useWatch:" />; */}
       {/* <FormExample22 title="reset and resetField:" />; */}
       {/* <FormExample23 title="setError and clearErrors:" />; */}
       {/* <FormExample3 title="useFieldArray" />; */}
-      <FormExample4 title="useController" />;
+      {/* <FormExample4 title="useController" />; */}
       {/* <FormExample5 title="useFormContext" />; */}
       {/* <FormExample6 title="Zod Validation" />; */}
       {/* <FormExample7 title="useForm Mode" /> */}
